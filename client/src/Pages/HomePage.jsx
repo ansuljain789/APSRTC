@@ -1,16 +1,11 @@
 import React from 'react'
-import Login from '../Main Pages/Authentication/Login'
-import { BrowserRouter } from 'react-router-dom'
+import Navbar from '../Pages/Navbar'
 
-function HomePage() {
+const HomePage = () => {
   return (
-    
-    <div>HomePage
-
-
-
-<Login/>
-    </div>
+   <>
+    <Navbar/>
+   </>
   )
 }
 
