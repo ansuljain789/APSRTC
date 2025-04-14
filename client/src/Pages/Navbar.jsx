@@ -48,7 +48,7 @@ function Navbar() {
             />
           </Box>
 
-          {/* Desktop view: Navigation pages in the center */}
+          {/* Desktop view: Navigation pages in the center 1 */}
           <Box
             sx={{
               flexGrow: 1,
@@ -159,6 +159,7 @@ function Navbar() {
               APSRTC
             </Typography>
           </Box>
+
         </Toolbar>
       </Container>
     </AppBar>
