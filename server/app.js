@@ -12,7 +12,7 @@ import crewDetail from "./routes/crew.js"
 import busesRoutes from './routes/buses.js';
 import schedulingRoutes from './routes/scheduling.js';
 import routesRoutes from './routes/routes.js';
-import { Crew } from './models/Crew.js';
+import { Crew } from './models/crew.js';
 
 dotenv.config();
 

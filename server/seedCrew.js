@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
-const Crew = require("./models/Crew");
+import mongoose from "mongoose";
+import { Crew } from "../server/models/crew.js";
 
-mongoose.connect("mongodb://127.0.0.1:27017/dtc_scheduling", {
+mongoose.connect("mongodb+srv://h2incco:Sonam@dtcms.2cynq.mongodb.net/dtc_scheduling", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   serverSelectionTimeoutMS: 30000, 
