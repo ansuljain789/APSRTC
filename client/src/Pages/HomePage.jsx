@@ -1,8 +1,16 @@
 import React from 'react'
+import Login from '../Main Pages/Authentication/Login'
+import { BrowserRouter } from 'react-router-dom'
 
 function HomePage() {
   return (
-    <div>HomePage</div>
+    
+    <div>HomePage
+
+
+
+<Login/>
+    </div>
   )
 }
 
