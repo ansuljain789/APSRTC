@@ -1,14 +1,17 @@
-
+import React from 'react'
+import {BrowserRouter as Router, Route, Routes, Link, BrowserRouter } from 'react-router-dom'
 import './App.css'
-import Login from './Main Pages/Authentication/Login'
+import HomePage from './Pages/HomePage'
 
 function App() {
 
-
   return (
     <>
-     <p>Welcome to APSRTC</p>
-     <Login/>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={ <HomePage/>} />
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
