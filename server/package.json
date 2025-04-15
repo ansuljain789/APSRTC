@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "SET NODE_ENV=PRODUCTION && node app.js",
-    "dev": "SET NODE_ENV=PRODUCTION && nodemon app.js"
+    "dev": "concurrently \"SET NODE_ENV=PRODUCTION && nodemon app.js\" \"python fetcher/fetch_live_data.py\""
   },
   "keywords": [],
   "author": "",
@@ -28,6 +28,7 @@
   },
   "devDependencies": {
     "@faker-js/faker": "^9.3.0",
+    "concurrently": "^9.1.2",
     "nodemon": "^3.1.9"
   }
 }
