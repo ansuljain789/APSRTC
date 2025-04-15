@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import { Crew } from "../models/Crew.js";
+import { Crew } from "../models/crew.js";
 import { isShiftActiveOrStartingSoon, getISTDate } from '../utils/shiftUtils.js';
 
 const Bus = mongoose.model(
@@ -174,9 +174,6 @@ const updateShiftStatuses = async () => {
   }
 };
 
-
-
-
 // Complete a trip
 const completeTrip = async (req, res) => {
   const { crewId, busId } = req.body;
@@ -327,7 +324,7 @@ const crewDetail = async (req, res) => {
   try {
       const crews = await Crew.find({});
       res.status(200).json({
-        message: "hi there"
+        message: crews
       });
   } catch (error) {
       console.error('Error fetching crew data:', error);
