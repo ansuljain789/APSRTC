@@ -62,26 +62,26 @@ const MONGO_URI = process.env.MONGO_URI;
 mongoose
   .connect(MONGO_URI, { dbName: 'dtc_scheduling' })
   .then(() => {
-    console.log('✅ Connected to MongoDB successfully!');
+    console.log('Connected to MongoDB successfully!');
     
     // Emit bus updates every 10 seconds via Socket.IO
     setInterval(async () => {
       try {
         const buses = await Bus.find({});
         io.emit('busUpdates', buses);
-        console.log('🚌 Bus updates sent to clients');
+        console.log('Bus updates sent to clients');
       } catch (error) {
-        console.error('❌ Error during bus updates:', error);
+        console.error('Error during bus updates:', error);
       }
     }, 10000);
 
     // Start the HTTP server after successful DB connection
     server.listen(PORT, () =>
-      console.log(`🚀 Server running on http://localhost:${PORT}`)
+      console.log(`Server running on http://localhost:${PORT}`)
     );
   })
   .catch((error) => {
-    console.error('❌ Failed to connect to MongoDB:', error);
+    console.error('Failed to connect to MongoDB:', error);
     process.exit(1);
   });
 
