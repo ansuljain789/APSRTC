@@ -10,12 +10,18 @@ import Container from '@mui/material/Container';
 import Button from '@mui/material/Button';
 import MenuItem from '@mui/material/MenuItem';
 import logo from "../assets/images/logo.png";
+import { useNavigate } from 'react-router-dom';
 
-const pages = ['LOGIN', 'REGISTER', 'AGENT LOGIN', 'CONTACT US'];
+const Navbar = () => {
+  const pages = [
+    { label: 'LOGIN', path: '/login' },
+    { label: 'SIGNUP', path: '/signup' },
+    { label: 'AGENT LOGIN', path: '/agent-login' },
+    { label: 'CONTACT US', path: '/contact' },
+  ];
 
-function Navbar() {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
-
+  const navigate = useNavigate();
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget);
   };
@@ -24,8 +30,13 @@ function Navbar() {
     setAnchorElNav(null);
   };
 
+
+
+ 
   return (
-    <AppBar position="fixed">
+   <>
+
+<AppBar position="fixed">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           {/* Desktop view: Image logo on the left */}
@@ -48,7 +59,7 @@ function Navbar() {
             />
           </Box>
 
-          {/* Desktop view: Navigation pages in the center */}
+          {/* Desktop view: Navigation pages in the center 1 */}
           <Box
             sx={{
               flexGrow: 1,
@@ -58,11 +69,15 @@ function Navbar() {
           >
             {pages.map((page) => (
               <Button
-                key={page}
-                onClick={handleCloseNavMenu}
+                key={page.label}
+                onClick={()=>{
+                  handleCloseNavMenu();
+                  navigate(page.path)
+      
+                }}
                 sx={{mx: 4,  my: 2, color: 'white', display: 'block' }}
               >
-                {page}
+                {page.label}
               </Button>
             ))}
           </Box>
@@ -127,8 +142,14 @@ function Navbar() {
               sx={{ display: { xs: 'block', md: 'none' } }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                <MenuItem key={page.label} 
+                 onClick={()=>{
+                  handleCloseNavMenu();
+                  navigate(page.path)
+                 }}
+              
+              >
+                  <Typography textAlign="center">{page.label}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -159,10 +180,16 @@ function Navbar() {
               APSRTC
             </Typography>
           </Box>
+
         </Toolbar>
       </Container>
     </AppBar>
-  );
+
+   </>
+  )
 }
 
-export default Navbar;
+export default Navbar
+
+
+
