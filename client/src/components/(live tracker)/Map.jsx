@@ -38,9 +38,11 @@ const Map = ({ buses, selectedBusId }) => {
     }
   }, [selectedBusId, buses]);
 
-  const displayedBuses = selectedBusId
+  const displayedBuses = Array.isArray(buses)
+  ? selectedBusId
     ? buses.filter((bus) => bus.vehicle_id === selectedBusId)
-    : buses;
+    : buses
+  : [];
 
   if (!isLoaded) return <div>Loading...</div>;
 

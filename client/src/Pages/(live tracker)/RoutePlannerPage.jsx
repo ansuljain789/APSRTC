@@ -10,7 +10,7 @@ const RoutePlannerPage = () => {
   const [routeData, setRouteData] = useState(null);
 
   const handlePlanRoute = async () => {
-    const response = await axios.get('http://localhost:5001/api/routes/plan', {
+    const response = await axios.get('http://localhost:3000/api/routes/plan', {
       params: {
         origin_stop_id: originStopId,
         destination_stop_id: destinationStopId,

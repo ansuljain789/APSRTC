@@ -10,6 +10,7 @@ import Signup from './Main Pages/Authentication/Signup'
 import Driver from './Pages/Driver'
 import ContactUs from './Pages/ContactUs'
 import Footer from './Pages/Footer'
+import RoutePlannerMLOPs from './Pages/(live tracker)/RoutePlannerMLOPs'
 import AgentLogin from './Main Pages/Authentication/AgentLogin'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path='/live' element={ <LiveTrackerPage/>} />
           <Route path='/planner' element={ <RoutePlannerPage/>} />
           <Route path='/admin' element={ <AdminDashboard/>} />
+          <Route path='/planners' element={ <RoutePlannerMLOPs/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
