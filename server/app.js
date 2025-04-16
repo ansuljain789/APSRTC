@@ -13,6 +13,7 @@ import busesRoutes from './routes/buses.js';
 import schedulingRoutes from './routes/scheduling.js';
 import routesRoutes from './routes/routes.js';
 import { Crew } from './models/crew.js';
+import { Bus } from './models/bus.js';
 
 dotenv.config();
 
