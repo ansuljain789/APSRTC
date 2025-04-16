@@ -43,7 +43,7 @@ const Footer = () => {
             Explore With Us
             </Typography>
             <Typography variant="body2" sx={{ lineHeight: 1.8 }}>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis ipsum corporis, incidunt aperiam, consectetur distinctio rerum nulla blanditiis excepturi, totam veritatis eum aliquam. Magni molestiae, sint expedita sed quia eum.
+            APSRTC, or Andhra Pradesh State Road Transport Corporation, is a government-owned transport service that was established in 1958 to provide reliable and affordable public transportation across the state of Andhra Pradesh. With one of the largest bus fleets in India, APSRTC connects remote villages to major cities, ensuring accessibility for all. 
             </Typography>
           </Box>
 

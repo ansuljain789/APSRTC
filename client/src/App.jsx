@@ -7,11 +7,12 @@ import Signup from './Main Pages/Authentication/Signup'
 import AdminDashboard from './Pages/AdminDashboard'
 import Driver from './Pages/Driver'
 import ContactUs from './Pages/ContactUs'
+import Footer from './Pages/Footer'
 
 function App() {
   return (
     <>
-      <Router>
+      <BrowserRouter>
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
@@ -21,7 +22,7 @@ function App() {
           <Route path="/contact" element={<ContactUs/>} />
         </Routes>
         <Footer />
-      </Router>
+      </BrowserRouter>
     </>
   );
 }
