@@ -3,8 +3,10 @@ import {BrowserRouter as Router, Route, Routes, Link, BrowserRouter } from 'reac
 import './App.css'
 import HomePage from './Pages/HomePage'
 import Login from './Main Pages/Authentication/Login'
-import Signup from './Main Pages/Authentication/Signup'
+import LiveTrackerPage from './Pages/(live tracker)/LiveTrackerPage'
+import RoutePlannerPage from './Pages/(live tracker)/RoutePlannerPage'
 import AdminDashboard from './Pages/AdminDashboard'
+import Signup from './Main Pages/Authentication/Signup'
 import Driver from './Pages/Driver'
 import ContactUs from './Pages/ContactUs'
 import Footer from './Pages/Footer'
@@ -14,12 +16,15 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<HomePage />} />
+          <Route path='/' element={ <HomePage/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminDashboard/>} />
           <Route path="/driver" element={<Driver/>} />
           <Route path="/contact" element={<ContactUs/>} />
+            <Route path='/live' element={ <LiveTrackerPage/>} />
+          <Route path='/planner' element={ <RoutePlannerPage/>} />
+          <Route path='/admin' element={ <AdminDashboard/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
