@@ -36,4 +36,4 @@ const schema = new Schema({
     }
 );
 
-export const User = mongoose.models.User || model("Crew", schema);
+export const User = mongoose.models.User || model("User", schema);
