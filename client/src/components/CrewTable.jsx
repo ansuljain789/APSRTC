@@ -22,7 +22,7 @@ const CrewTable = ({ crews, onChangeShiftClick, onSwapBusClick }) => {
       title: 'Assigned Bus',
       dataIndex: 'assignedBus',
       key: 'assignedBus',
-      render: (bus) => (bus ? bus.vehicle_id : 'Not Assigned'),
+      render: (bus) => (bus ? `${bus}` : 'Bus Not Assigned'),
     },
     {
       title: 'Actions',

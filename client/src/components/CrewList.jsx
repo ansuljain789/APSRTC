@@ -15,7 +15,7 @@ const CrewList = ({ crews, onChangeShiftClick, onSwapBusClick }) => {
                 {crew.status}
               </Tag>
             </p>
-            <p><strong>Assigned Bus:</strong> {crew.assignedBus ? crew.assignedBus.vehicle_id : 'Not Assigned'}</p>
+            <p><strong>Assigned Bus:</strong> {crew.assignedBus ? crew.assignedBus.vehicle_id : 'Not Assigned bus'}</p>
             <p><strong>Rest Until:</strong> {crew.restUntil ? new Date(crew.restUntil).toLocaleString() : 'N/A'}</p>
 
             <Button 
