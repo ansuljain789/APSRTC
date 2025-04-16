@@ -12,8 +12,11 @@ import crewDetail from "./routes/crew.js"
 import busesRoutes from './routes/buses.js';
 import schedulingRoutes from './routes/scheduling.js';
 import routesRoutes from './routes/routes.js';
+import { Bus } from './models/bus.js';
+import adminRoute from './routes/admin.js'
 import { Crew } from './models/crew.js';
 import { Bus } from './models/bus.js';
+
 
 dotenv.config();
 
@@ -35,10 +38,12 @@ app.use(
 );
 
 // 5. Setup API Routes
+app.use('/api/')
 app.use('/api/crew', crewDetail);
 app.use('/api/buses', busesRoutes);
 app.use('/api/routes', routesRoutes);
 app.use('/api/scheduling', schedulingRoutes);
+app.use('/api/admin', adminRoute)
 
 // 6. Create HTTP Server and Integrate Socket.IO
 const server = http.createServer(app);
@@ -50,11 +55,27 @@ const io = new SocketIOServer(server, {
   },
 });
 
+const connectedCrew = new Map();
+
 // Socket.IO Connection Management
 io.on('connection', (socket) => {
   console.log(`Client connected: ${socket.id}`);
+
+  // When crew connects, they register their ID
+  socket.on('registerCrew', (crewId) => {
+    connectedCrew.set(crewId, socket.id);
+    console.log(`Crew ${crewId} registered with socket ${socket.id}`);
+  });
+
+  // On disconnect, remove from map
   socket.on('disconnect', () => {
-    console.log(`Client disconnected: ${socket.id}`);
+    for (const [crewId, id] of connectedCrew.entries()) {
+      if (id === socket.id) {
+        connectedCrew.delete(crewId);
+        console.log(`Crew ${crewId} disconnected`);
+        break;
+      }
+    }
   });
 });
 
@@ -122,3 +143,5 @@ cron.schedule('*/5 * * * * *', async () => {
     console.error('Error in scheduled job:', error);
   }
 });
+
+export { io, connectedCrew };
