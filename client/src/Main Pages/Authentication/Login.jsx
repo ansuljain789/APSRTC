@@ -16,7 +16,7 @@ const Login = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:3000/user/login",
+        "http://localhost:3000/api/",
         { aadharCardNumber, password },
         { headers: { "Content-Type": "application/json" } }
       ); 
@@ -33,7 +33,7 @@ const Login = () => {
       if (response.data.role === "admin") {
         navigate("/admin");
       } else {
-        navigate("/profile");
+        navigate("/driver");
       }
     } catch (error) {
         console.error("Login failed:", error.response?.data || error.message);
