@@ -9,7 +9,7 @@ const containerStyle = {
 
 const Map = ({ buses, selectedBusId }) => {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyBcG-MLMZ9FNZ38OxNkqPywc_N47HRbJmU",
+    googleMapsApiKey: "",
   });
 
   const mapRef = useRef(null);
