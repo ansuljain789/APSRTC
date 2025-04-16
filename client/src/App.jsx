@@ -10,6 +10,7 @@ import Signup from './Main Pages/Authentication/Signup'
 import Driver from './Pages/Driver'
 import ContactUs from './Pages/ContactUs'
 import Footer from './Pages/Footer'
+import RoutePlannerMLOPs from './Pages/(live tracker)/RoutePlannerMLOPs'
 
 function App() {
   return (
@@ -22,9 +23,10 @@ function App() {
           <Route path="/admin" element={<AdminDashboard/>} />
           <Route path="/driver" element={<Driver/>} />
           <Route path="/contact" element={<ContactUs/>} />
-            <Route path='/live' element={ <LiveTrackerPage/>} />
+          <Route path='/live' element={ <LiveTrackerPage/>} />
           <Route path='/planner' element={ <RoutePlannerPage/>} />
           <Route path='/admin' element={ <AdminDashboard/>} />
+          <Route path='/planners' element={ <RoutePlannerMLOPs/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
