@@ -1,5 +1,6 @@
 server/.env
 server/node_modules
 client/node_modules
+client/.env
 MLOPs/__pycache__
 MLOPs/route_optimizer
