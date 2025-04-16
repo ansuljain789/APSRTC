@@ -31,7 +31,7 @@ const LiveTrackerPage = () => {
     return () => {
       socket.disconnect();
     };
-  }, []);
+  }, []); 
 
   return (
     <div style={{ display: 'flex', height: '100%' }}>

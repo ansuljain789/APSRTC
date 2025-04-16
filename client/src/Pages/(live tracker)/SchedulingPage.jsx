@@ -15,7 +15,7 @@ const SchedulingPage = () => {
       });
       alert('Schedule created successfully');
     } catch (error) {
-      console.error('Error creating schedule:', error);
+      console.error('Error creating schedule:', error); 
       alert('Failed to create schedule');
     }
   };

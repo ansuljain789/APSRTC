@@ -14,7 +14,7 @@ const RoutePlannerPage = () => {
       params: {
         origin_stop_id: originStopId,
         destination_stop_id: destinationStopId,
-        useOfficial: useOfficial.toString(),
+        useOfficial: useOfficial.toString(), 
         optimize: optimize.toString(),
       },
     });

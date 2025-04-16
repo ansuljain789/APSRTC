@@ -10,7 +10,7 @@ const DestinationForm = () => {
       new_stop_id: newStopId
     });
     alert('Destination changed successfully');
-  };
+  }; 
 
   return (
     <div style={{ padding: '10px' }}>
