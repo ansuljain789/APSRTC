@@ -13,7 +13,7 @@ function Signup() {
   const[email,setEmail]=useState("");
   const[mobile,setMobile]=useState("");
   const[address,setAddress]=useState("");
-  const [aadharCardNumber, setAadharCardNumber] = useState("");
+  const [adhar, setAadharCardNumber] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("voter"); // Default role is "user"
   const navigate = useNavigate();
@@ -21,15 +21,8 @@ function Signup() {
   const handleSignup = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("", {
-        name,
-        age,
-        email,
-        mobile,
-        address,
-        aadharCardNumber,
-        password,
-        role
+      await axios.post("http://localhost:3000/api/signup", {
+        name, age, email, mobile, address, adhar, role, password
       });
 
   
@@ -114,7 +107,7 @@ function Signup() {
           type="text"
           placeholder="Aadhar Card Number"
           className="border p-2 w-full"
-          value={aadharCardNumber}
+          value={adhar}
           onChange={(e) => setAadharCardNumber(e.target.value)}
           required
         />
@@ -139,9 +132,8 @@ function Signup() {
           value={role}
           onChange={(e) => setRole(e.target.value)}
            >
-          <option value="voter">Admin</option>
-          <option value="admin">Driver</option>
-          <option value="admin">Conductor</option>
+          <option value="admin">Admin</option>
+          <option value="driver">Driver</option>
         </select>
         </div>
   
@@ -153,5 +145,9 @@ function Signup() {
     </div>
   );
 }
+
+
+
+
 
 export default Signup;
