@@ -29,9 +29,6 @@ const Navbar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-
-
  
   return (
    <>
