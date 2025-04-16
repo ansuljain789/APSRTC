@@ -12,9 +12,9 @@ import crewDetail from "./routes/crew.js"
 import busesRoutes from './routes/buses.js';
 import schedulingRoutes from './routes/scheduling.js';
 import routesRoutes from './routes/routes.js';
-import { Crew } from './models/crew.js';
 import { Bus } from './models/bus.js';
 import adminRoute from './routes/admin.js'
+import { Crew } from './models/crew.js';
 
 
 dotenv.config();
@@ -37,6 +37,7 @@ app.use(
 );
 
 // 5. Setup API Routes
+app.use('/api/')
 app.use('/api/crew', crewDetail);
 app.use('/api/buses', busesRoutes);
 app.use('/api/routes', routesRoutes);
