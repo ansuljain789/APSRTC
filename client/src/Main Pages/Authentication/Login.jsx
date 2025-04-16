@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { FaIdCard, FaLock } from "react-icons/fa";
 
 const Login = () => {
   const [aadharCardNumber, setAadharCardNumber] = useState("");
@@ -19,76 +20,106 @@ const Login = () => {
         "http://localhost:3000/api/",
         { aadharCardNumber, password },
         { headers: { "Content-Type": "application/json" } }
-      ); 
+      );
 
-      console.log("Login successful:", response.data);
-
-      // Store token & role in localStorage
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
-      console.log("User Role:", response.data.role);
 
-
-      // Redirect based on role
       if (response.data.role === "admin") {
         navigate("/admin");
       } else {
         navigate("/driver");
       }
     } catch (error) {
-        console.error("Login failed:", error.response?.data || error.message);
-
-        // Check if it's a network error
-        if (error.response) {
-          setError(error.response.data.message || "Invalid Aadhaar number or password.");
-        } else {
-          setError("Server is unreachable. Please try again later.");
-        }
-    }
-    finally{
-        setLoading(false);
+      if (error.response) {
+        setError(error.response.data.message || "Invalid Aadhaar number or password.");
+      } else {
+        setError("Server is unreachable. Please try again later.");
+      }
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-tr from-indigo-100 via-pink-100 to-blue-100 px-4">
+      <form
+        onSubmit={handleLogin}
+        className="bg-white shadow-2xl p-8 rounded-3xl w-full max-w-md animate-slideIn"
+      >
+        <h2 className="text-3xl font-extrabold text-center text-indigo-600 mb-6 tracking-wide">
+          User Login
+        </h2>
 
-      <form onSubmit={handleLogin} className="bg-white p-6 rounded shadow-md w-80">
-      <h2 className="text-2xl font-bold text-center mb-6">Login</h2>
-        {error && <p className="text-red-500 mb-2">{error}</p>}
-        <input
-          type="text"
-          placeholder="Aadhaar Card Number"
-          value={aadharCardNumber}
-          onChange={(e) => setAadharCardNumber(e.target.value)}
-          required
-          className="w-full p-2 border rounded mb-2"
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-          className="w-full p-2 border rounded mb-2"
-        />
+        {error && (
+          <p className="text-red-500 mb-3 text-center text-sm">{error}</p>
+        )}
+
+        {/* Aadhar Field */}
+        <div className="relative mb-5">
+          <FaIdCard className="absolute top-3 left-3 text-gray-400 text-sm" />
+          <input
+            type="text"
+            value={aadharCardNumber}
+            onChange={(e) => setAadharCardNumber(e.target.value)}
+            required
+            placeholder="Aadhaar Card Number"
+            className="w-full pl-10 pr-3 py-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder-gray-400 text-sm"
+          />
+        </div>
+
+        {/* Password Field */}
+        <div className="relative mb-6">
+          <FaLock className="absolute top-3 left-3 text-gray-400 text-sm" />
+          <input
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+            placeholder="Password"
+            className="w-full pl-10 pr-3 py-3 rounded-md border focus:outline-none focus:ring-2 focus:ring-indigo-400 placeholder-gray-400 text-sm"
+          />
+        </div>
+
+        {/* Button */}
         <button
           type="submit"
-          className="w-full bg-blue-500 text-white p-2 rounded"
-          disabled={loading} // Disable button when loading
+          disabled={loading}
+          className={`w-full bg-indigo-500 hover:bg-indigo-600 transition text-white py-2 rounded-md font-semibold text-sm ${
+            loading ? "opacity-60 cursor-not-allowed" : ""
+          }`}
         >
           {loading ? "Logging in..." : "Login"}
         </button>
 
-        <p className="text-center text-sm mt-4">
-  <a href="/ForgotPassword" className="text-blue-500 hover:underline">
-    Forgot Password?
-  </a>
-</p>
+        <div className="text-center mt-4">
+          <a
+            href="/ForgotPassword"
+            className="text-indigo-500 hover:underline text-sm"
+          >
+            Forgot Password?
+          </a>
+        </div>
       </form>
+
+      {/* Animation */}
+      <style jsx="true">{`
+        @keyframes slideIn {
+          0% {
+            opacity: 0;
+            transform: translateY(40px);
+          }
+          100% {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        .animate-slideIn {
+          animation: slideIn 0.6s ease-out;
+        }
+      `}</style>
     </div>
-    
   );
 };
 

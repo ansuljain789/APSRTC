@@ -7,23 +7,24 @@ import Signup from './Main Pages/Authentication/Signup'
 import AdminDashboard from './Pages/AdminDashboard'
 import Driver from './Pages/Driver'
 import ContactUs from './Pages/ContactUs'
+import Footer from './Pages/Footer'
 
 function App() {
-
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={ <HomePage/>} />
+          <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminDashboard/>} />
           <Route path="/driver" element={<Driver/>} />
           <Route path="/contact" element={<ContactUs/>} />
         </Routes>
+        <Footer />
       </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
