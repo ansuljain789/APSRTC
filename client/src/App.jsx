@@ -6,7 +6,7 @@ import Login from './Main Pages/Authentication/Login'
 import Signup from './Main Pages/Authentication/Signup'
 import AdminDashboard from './Pages/AdminDashboard'
 import Driver from './Pages/Driver'
-
+import ContactUs from './Pages/ContactUs'
 
 function App() {
 
@@ -19,6 +19,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/admin" element={<AdminDashboard/>} />
           <Route path="/driver" element={<Driver/>} />
+          <Route path="/contact" element={<ContactUs/>} />
         </Routes>
       </BrowserRouter>
     </>
