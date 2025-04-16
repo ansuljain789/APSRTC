@@ -4,6 +4,7 @@ import './App.css'
 import HomePage from './Pages/HomePage'
 import Login from './Main Pages/Authentication/Login'
 import Signup from './Main Pages/Authentication/Signup'
+import AdminDashboard from './Pages/AdminDashboard'
 
 function App() {
 
