@@ -4,6 +4,7 @@ import './App.css'
 import HomePage from './Pages/HomePage'
 import Login from './Main Pages/Authentication/Login'
 import Signup from './Main Pages/Authentication/Signup'
+import ContactUs from './Pages/ContactUs'
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
           <Route path='/' element={ <HomePage/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
+          <Route path="/contact" element={<ContactUs/>} />
         </Routes>
       </BrowserRouter>
     </>
