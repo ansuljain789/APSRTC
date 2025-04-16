@@ -15,6 +15,8 @@ import routesRoutes from './routes/routes.js';
 import { Bus } from './models/bus.js';
 import adminRoute from './routes/admin.js'
 import { Crew } from './models/crew.js';
+import { jwtAuthMiddleware, generateToken } from './jwt.js';
+import router from './routes/userRoutes.js';
 
 
 dotenv.config();
@@ -37,12 +39,14 @@ app.use(
 );
 
 // 5. Setup API Routes
-app.use('/api/')
-app.use('/api/crew', crewDetail);
-app.use('/api/buses', busesRoutes);
-app.use('/api/routes', routesRoutes);
-app.use('/api/scheduling', schedulingRoutes);
-app.use('/api/admin', adminRoute)
+// Only protect the routes that require authentication
+app.use('/api/signup', router); // remove jwtAuthMiddleware
+app.use('/api/login', router);  // remove jwtAuthMiddleware
+app.use('/api/crew',jwtAuthMiddleware, crewDetail);
+app.use('/api/buses', jwtAuthMiddleware,busesRoutes);
+app.use('/api/routes', jwtAuthMiddleware,routesRoutes);
+app.use('/api/scheduling', jwtAuthMiddleware,schedulingRoutes);
+app.use('/api/admin', jwtAuthMiddleware,adminRoute)
 
 // 6. Create HTTP Server and Integrate Socket.IO
 const server = http.createServer(app);
