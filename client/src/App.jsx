@@ -10,6 +10,7 @@ import Signup from './Main Pages/Authentication/Signup'
 import Driver from './Pages/Driver'
 import ContactUs from './Pages/ContactUs'
 import Footer from './Pages/Footer'
+import AgentLogin from './Main Pages/Authentication/AgentLogin'
 
 function App() {
   return (
@@ -19,10 +20,10 @@ function App() {
           <Route path='/' element={ <HomePage/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/admin" element={<AdminDashboard/>} />
+          <Route path="/agentLogin" element={<AgentLogin />} />
           <Route path="/driver" element={<Driver/>} />
           <Route path="/contact" element={<ContactUs/>} />
-            <Route path='/live' element={ <LiveTrackerPage/>} />
+          <Route path='/live' element={ <LiveTrackerPage/>} />
           <Route path='/planner' element={ <RoutePlannerPage/>} />
           <Route path='/admin' element={ <AdminDashboard/>} />
         </Routes>
