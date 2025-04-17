@@ -16,7 +16,7 @@ const Navbar = () => {
   const pages = [
     { label: 'LOGIN', path: 'newUser/login' },
     { label: 'SIGNUP', path: 'newUser/signup' },
-    { label: 'ADMIN LOGIN', path: '/agent-login' },
+    { label: 'ADMIN LOGIN', path: '/agentLogin' },
     { label: 'CONTACT US', path: '/contact' },
   ];
 
