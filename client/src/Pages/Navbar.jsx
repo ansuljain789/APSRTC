@@ -14,9 +14,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const pages = [
-    { label: 'LOGIN', path: '/login' },
-    { label: 'SIGNUP', path: '/signup' },
-    { label: 'ADMIN LOGIN', path: '/agentLogin' },
+    { label: 'LOGIN', path: 'newUser/login' },
+    { label: 'SIGNUP', path: 'newUser/signup' },
+    { label: 'ADMIN LOGIN', path: '/agent-login' },
     { label: 'CONTACT US', path: '/contact' },
   ];
 
@@ -29,6 +29,9 @@ const Navbar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
+
+
+
  
   return (
    <>
