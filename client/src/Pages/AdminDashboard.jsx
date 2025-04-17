@@ -3,6 +3,7 @@ import { getCrewList } from '../services/api';
 import CrewTable from '../components/CrewTable';
 import ShiftChangeModal from '../components/ShiftChangeModal';
 import BusSwapModal from '../components/BusSwapModal';
+import { useNavigate } from 'react-router-dom'; 
 
 
 const AdminDashboard = () => {
@@ -10,10 +11,15 @@ const AdminDashboard = () => {
   const [selectedCrew, setSelectedCrew] = useState(null);
   const [isShiftModalVisible, setShiftModalVisible] = useState(false);
   const [isBusSwapModalVisible, setBusSwapModalVisible] = useState(false);
-
+   
+  const navigate = useNavigate();
   const fetchCrewList = async () => {
     const data = await getCrewList();
     setCrews(data);
+  };
+  const handleLogout = () => {
+    localStorage.removeItem('token'); // Assuming you're using localStorage
+   navigate('/newUser/login') // Redirect to login page
   };
 
   useEffect(() => {
@@ -34,6 +40,12 @@ const AdminDashboard = () => {
     <div className="fullscreen-container">
       <header style={{ textAlign: 'center', padding: '10px 0', backgroundColor: '#1890ff', color: '#fff' }}>
         <h1>Admin Dashboard</h1>
+        <button 
+          onClick={handleLogout} 
+          style={{ marginTop: '10px', padding: '10px', backgroundColor: '#ff4d4f', color: '#fff', border: 'none', cursor: 'pointer' }}
+        >
+          Logout
+        </button>
       </header>
       
       <div className="fullscreen-content">

@@ -10,6 +10,7 @@ import Signup from './Main Pages/Authentication/Signup'
 import Driver from './Pages/Driver'
 import ContactUs from './Pages/ContactUs'
 import Footer from './Pages/Footer'
+import RoutePlannerMLOPs from './Pages/(live tracker)/RoutePlannerMLOPs'
 import AgentLogin from './Main Pages/Authentication/AgentLogin'
 
 function App() {
@@ -18,14 +19,16 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path='/' element={ <HomePage/>} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
+          <Route path="/newUser/login" element={<Login />} />
+          <Route path="/newUser/signup" element={<Signup />} />
           <Route path="/agentLogin" element={<AgentLogin />} />
+          <Route path="/admin" element={<AdminDashboard/>} />
           <Route path="/driver" element={<Driver/>} />
           <Route path="/contact" element={<ContactUs/>} />
           <Route path='/live' element={ <LiveTrackerPage/>} />
           <Route path='/planner' element={ <RoutePlannerPage/>} />
           <Route path='/admin' element={ <AdminDashboard/>} />
+          <Route path='/planners' element={ <RoutePlannerMLOPs/>} />
         </Routes>
         <Footer />
       </BrowserRouter>
