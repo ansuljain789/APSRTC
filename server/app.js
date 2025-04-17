@@ -37,7 +37,7 @@ app.use(
 );
 
 // 5. Setup API Routes
-app.use('/api/');
+//app.use('/api/');
 app.use('/api/crew', crewDetail);
 app.use('/api/buses', busesRoutes);
 app.use('/api/routes', routesRoutes);
