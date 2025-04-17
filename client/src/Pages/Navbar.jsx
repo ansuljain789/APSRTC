@@ -14,8 +14,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Navbar = () => {
   const pages = [
-    { label: 'LOGIN', path: '/login' },
-    { label: 'SIGNUP', path: '/signup' },
+    { label: 'LOGIN', path: 'newUser/login' },
+    { label: 'SIGNUP', path: 'newUser/signup' },
     { label: 'AGENT LOGIN', path: '/agent-login' },
     { label: 'CONTACT US', path: '/contact' },
   ];

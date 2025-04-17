@@ -15,11 +15,14 @@ const Login = () => {
     setLoading(true);
 
     try {
+      console.log("entering for login");
+      
       const response = await axios.post(
-        "http://localhost:3000/api/",
+        "http://localhost:3000/api/newUser/login", // ✅ corrected endpoint
         { aadharCardNumber, password },
         { headers: { "Content-Type": "application/json" } }
-      ); 
+      );
+      console.log("entered for login");
 
       console.log("Login successful:", response.data);
 
@@ -27,7 +30,7 @@ const Login = () => {
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
       console.log("User Role:", response.data.role);
-
+   
 
       // Redirect based on role
       if (response.data.role === "admin") {
