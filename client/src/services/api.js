@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = 'http://localhost:5000/api/crew';
+const API_BASE_URL = 'http://localhost:3000/api/crew';
 
 export const getCrewList = async () => {
   try {
