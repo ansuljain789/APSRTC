@@ -138,18 +138,6 @@ const Signup = () => {
           required
         />
         </div>
-
-        <div>
-        <label className="">Role: </label>
-        <select
-          className="border p-2 w-full"
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-           >
-          <option value="admin">admin</option>
-          <option value="driver">driver</option>
-        </select>
-        </div>
   
 
         <button type="submit" className="bg-blue-500 text-white p-2 w-1xl">
