@@ -10,7 +10,7 @@ const Signup = () => {
   const[email,setEmail]=useState("");
   const[mobile,setMobile]=useState("");
   const[address,setAddress]=useState("");
-  const [adhar, setAadharCardNumber] = useState("");
+  const [aadharCardNumber, setAadharCardNumber] = useState("");
   const [password, setPassword] = useState("");
   const [role, setRole] = useState("admin"); // Default role is "user"
   // const navigate = useNavigate();
@@ -121,7 +121,7 @@ const Signup = () => {
           type="text"
           placeholder="Aadhar Card Number"
           className="border p-2 w-full"
-          value={adhar}
+          value={aadharCardNumber}
           onChange={(e) => setAadharCardNumber(e.target.value)}
           required
         />
