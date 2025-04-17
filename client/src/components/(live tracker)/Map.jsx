@@ -9,7 +9,7 @@ const containerStyle = {
 
 const Map = ({ buses, selectedBusId }) => {
   const { isLoaded } = useJsApiLoader({
-    googleMapsApiKey: "AIzaSyBcG-MLMZ9FNZ38OxNkqPywc_N47HRbJmU",
+    googleMapsApiKey: "",
   });
 
   const mapRef = useRef(null);
@@ -38,9 +38,11 @@ const Map = ({ buses, selectedBusId }) => {
     }
   }, [selectedBusId, buses]);
 
-  const displayedBuses = selectedBusId
+  const displayedBuses = Array.isArray(buses)
+  ? selectedBusId
     ? buses.filter((bus) => bus.vehicle_id === selectedBusId)
-    : buses;
+    : buses
+  : [];
 
   if (!isLoaded) return <div>Loading...</div>;
 

@@ -17,6 +17,6 @@ const BusList = ({ buses, setSelectedBusId }) => {
       </ul>
     </div>
   );
-};
+}; 
 
 export default BusList;

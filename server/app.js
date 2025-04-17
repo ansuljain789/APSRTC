@@ -15,37 +15,31 @@ import routesRoutes from './routes/routes.js';
 import { Bus } from './models/bus.js';
 import adminRoute from './routes/admin.js'
 import { Crew } from './models/crew.js';
-import { Bus } from './models/bus.js';
 
+import { jwtAuthMiddleware, requireAdmin } from './middleware/auth.js';
+import authRoutes from './routes/authRoutes.js';
 
 dotenv.config();
 
 // 3. Initialize Express App
 const app = express();
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT || 4000;
 
 // 4. Middleware Configuration
 // JSON Body Parser
 app.use(express.json());
 
 // CORS Setup
-app.use(
-  cors({
-    origin: '*', // For production, consider specifying the origins allowed.
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-  })
-);
+app.use(cors({ origin: '*', methods: ['GET', 'POST', 'PUT', 'DELETE'], credentials: true }));
+
 
 // 5. Setup API Routes
-// Only protect the routes that require authentication
-app.use('/api/signup', router); // remove jwtAuthMiddleware
-app.use('/api/login', router);  // remove jwtAuthMiddleware
-app.use('/api/crew',jwtAuthMiddleware, crewDetail);
-app.use('/api/buses', jwtAuthMiddleware,busesRoutes);
-app.use('/api/routes', jwtAuthMiddleware,routesRoutes);
-app.use('/api/scheduling', jwtAuthMiddleware,schedulingRoutes);
-app.use('/api/admin', jwtAuthMiddleware,adminRoute)
+app.use('/api/newUser',authRoutes);
+app.use('/api/crew',jwtAuthMiddleware,crewDetail);
+app.use('/api/buses',jwtAuthMiddleware,busesRoutes);
+app.use('/api/routes',jwtAuthMiddleware,routesRoutes);
+app.use('/api/scheduling',jwtAuthMiddleware,schedulingRoutes);
+app.use('/api/admin',jwtAuthMiddleware,adminRoute)
 
 // 6. Create HTTP Server and Integrate Socket.IO
 const server = http.createServer(app);

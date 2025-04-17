@@ -16,7 +16,7 @@ const Navbar = () => {
   const pages = [
     { label: 'LOGIN', path: '/login' },
     { label: 'SIGNUP', path: '/signup' },
-    { label: 'AGENT LOGIN', path: '/agent-login' },
+    { label: 'ADMIN LOGIN', path: '/agentLogin' },
     { label: 'CONTACT US', path: '/contact' },
   ];
 
@@ -29,9 +29,6 @@ const Navbar = () => {
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
-
-
-
  
   return (
    <>
