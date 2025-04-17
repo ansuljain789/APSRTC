@@ -6,7 +6,7 @@ const DestinationForm = () => {
   const [newStopId, setNewStopId] = useState('');
 
   const handleChangeDestination = async () => {
-    await axios.put(`http://localhost:5000/api/manual-routing/${vehicleId}/destination`, {
+    await axios.put(`http://localhost:3000/api/manual-routing/${vehicleId}/destination`, {
       new_stop_id: newStopId
     });
     alert('Destination changed successfully');
