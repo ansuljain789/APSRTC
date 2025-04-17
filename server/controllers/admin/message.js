@@ -1,5 +1,5 @@
 import { connectedCrew, io } from "../../app.js";
-import { Crew } from "../../models/Crew.js";
+import { Crew } from "../../models/crew.js";
 import { Message } from "../../models/Message.js"
 
 
@@ -34,8 +34,10 @@ export const getCrewMessages = async (req, res) => {
   try {
     const messages = await Message.find({ recipient: crewId }).sort({ createdAt: -1 });
     res.status(200).json(messages);
+    console.log(`fetch message for crew ${crewId}`)
   } catch (err) {
     res.status(500).json({ message: 'Failed to get messages', error: err });
+    console.log(`failed to fetch message for crew ${crewId}, error:{err}`)
   }
 };
 

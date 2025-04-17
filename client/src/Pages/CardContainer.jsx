@@ -3,109 +3,119 @@ import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from '@mui/material/DialogTitle';
+import DialogContent from '@mui/material/DialogContent';
 
-const bull = (
-  <Box
-    component="span"
-    sx={{ display: 'inline-block', mx: '2px', transform: 'scale(0.8)' }}
-  >
-    •
-  </Box>
-);
+// Import your image
+import Img1 from '../assets/images/beach.jpg';
+import Img2 from '../assets/images/Mountain.avif';
+import Img3 from '../assets/images/City.avif';
+import Img4 from '../assets/images/Forest.avif';
 
 const cardData = [
   {
-    title: '',
-    word: (<>{'be'}{bull}{'nev'}{bull}{'o'}{bull}{'lent'}</>),
-    partOfSpeech: 'adjective',
-    description: 'well meaning and kindly.\n"a benevolent smile"',
+    title: 'Beautiful Beach',
+    image: Img1,
+    description: 'Experience the serene beauty of crystal clear waters and soft sandy shores. Perfect for relaxation and photography lovers. Bring your sunscreen!',
   },
   {
-    title: 'Word of the Day',
-    word: (<>{'in'}{bull}{'no'}{bull}{'cent'}</>),
-    partOfSpeech: 'adjective',
-    description: 'innocent, not guilty.\n"an innocent look"',
+    title: 'Mountain Adventure',
+    image: Img2,
+    description: 'Explore breathtaking heights and adventure-filled trails with stunning views. Ideal for hikers, campers, and nature enthusiasts looking for peace.',
   },
   {
-    title: 'Word of the Day',
-    word: (<>{'ex'}{bull}{'cel'}{bull}{'lent'}</>),
-    partOfSpeech: 'adjective',
-    description: 'extremely good in quality.\n"an excellent performance"',
+    title: 'City Lights',
+    image: Img3,
+    description: 'Feel the vibrant energy of the city that never sleeps and its sparkling lights. Best for night owls and urban photographers.',
   },
   {
-    title: 'Word of the Day',
-    word: (<>{'de'}{bull}{'ter'}{bull}{'mined'}</>),
-    partOfSpeech: 'adjective',
-    description: 'having made a firm decision.\n"a determined spirit"',
+    title: 'Forest Escape',
+    image: Img4,
+    description: 'Take a break and reconnect with nature in peaceful forest landscapes. Great for long walks, meditation, and family picnics.',
   },
 ];
 
-const BasicCard = ({ title, word, partOfSpeech, description }) => {
-  const [selected, setSelected] = React.useState(false);
-  const handleClick = () => {
-    setSelected((prev) => !prev);
-  };
-
+const BasicCard = ({ title, image, description, onReadMore }) => {
   return (
-    <Card 
-      onClick={handleClick}
-      sx={{ 
-        minWidth: 275, 
-        cursor: 'pointer', 
-        transition: '0.3s',
-        border: selected ? '2px solid darkblue' : 'none',
-        '&:hover': {
-          border: '2px solid darkblue'
-        }
-      }}
-    >
+    <Card sx={{ maxWidth: 280, borderRadius: 4, boxShadow: 4 }}>
+      <CardMedia
+        component="img"
+        height="150"
+        image={image}
+        alt={title}
+      />
       <CardContent>
-        <Typography gutterBottom sx={{ color: 'text.secondary', fontSize: 14 }}>
+        <Typography gutterBottom variant="h6" component="div" fontWeight="bold">
           {title}
         </Typography>
-        <Typography variant="h5" component="div">
-          {word}
-        </Typography>
-        <Typography sx={{ color: 'text.secondary', mb: 1.5 }}>
-          {partOfSpeech}
-        </Typography>
-        <Typography variant="body2">
-          {description.split('\n').map((line, index) => (
-            <React.Fragment key={index}>
-              {line}
-              <br />
-            </React.Fragment>
-          ))}
+        <Typography variant="body2" color="text.secondary">
+          {description.length > 100 ? description.slice(0, 100) + '...' : description}
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size="small">Learn More</Button>
+        <Button size="small" sx={{ fontWeight: 'bold', color: '#1976d2' }} onClick={onReadMore}>
+          Read More
+        </Button>
       </CardActions>
     </Card>
   );
 };
 
 export default function CardContainer() {
+  const [open, setOpen] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState(null);
+
+  const handleReadMore = (card) => {
+    setSelectedCard(card);
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+    setSelectedCard(null);
+  };
+
   return (
-    <Box sx={{ flexGrow: 1, p: 2, backgroundColor: 'white' }}>
-      <Typography variant="h3" align="center" sx={{ mb: 4, color: '#2171fc', fontWeight:'bold' }}>
-        HOLIDAY
+    <Box sx={{ flexGrow: 1, p: 3, backgroundColor: '#f9fafb' }}>
+      <Typography variant="h4" align="center" sx={{ mb: 4, color: '#1976d2', fontWeight: 'bold' }}>
+        Discover Places
       </Typography>
-      <Grid container spacing={2} justifyContent="center">
+      <Grid container spacing={3} justifyContent="center">
         {cardData.map((card, index) => (
           <Grid item xs={12} sm={6} md={3} key={index}>
-            <BasicCard 
+            <BasicCard
               title={card.title}
-              word={card.word}
-              partOfSpeech={card.partOfSpeech}
+              image={card.image}
               description={card.description}
+              onReadMore={() => handleReadMore(card)}
             />
           </Grid>
         ))}
       </Grid>
+
+      {/* Read More Modal */}
+      <Dialog open={open} onClose={handleClose}>
+        {selectedCard && (
+          <>
+            <DialogTitle>{selectedCard.title}</DialogTitle>
+            <DialogContent>
+              <img
+                src={selectedCard.image}
+                alt={selectedCard.title}
+                style={{ width: '100%', borderRadius: 10, marginBottom: 15 }}
+              />
+              <Typography variant="body1" color="text.secondary">
+                {selectedCard.description}
+              </Typography>
+            </DialogContent>
+          </>
+        )}
+      </Dialog>
     </Box>
   );
 }

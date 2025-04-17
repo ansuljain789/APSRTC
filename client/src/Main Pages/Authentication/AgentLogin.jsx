@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { FaIdCard, FaLock } from "react-icons/fa";
 
-const Login = () => {
+const AgentLogin = () => {
   const [aadharCardNumber, setAadharCardNumber] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -16,19 +16,14 @@ const Login = () => {
     setLoading(true);
 
     try {
-      console.log("entering for login");
-      
       const response = await axios.post(
-        "http://localhost:3000/api/newUser/login", // ✅ corrected endpoint
+        "http://localhost:3000/api/",
         { aadharCardNumber, password },
         { headers: { "Content-Type": "application/json" } }
       );
-      console.log("entered for login");
 
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("role", response.data.role);
-      console.log("User Role:", response.data.role);
-   
 
       if (response.data.role === "admin") {
         navigate("/admin");
@@ -53,7 +48,7 @@ const Login = () => {
         className="bg-white shadow-2xl p-8 rounded-3xl w-full max-w-md animate-slideIn"
       >
         <h2 className="text-3xl font-extrabold text-center text-indigo-600 mb-6 tracking-wide">
-          User Login
+          Admin Login
         </h2>
 
         {error && (
@@ -128,4 +123,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default AgentLogin;
