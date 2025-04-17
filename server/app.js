@@ -34,12 +34,12 @@ app.use(cors({ origin: '*', methods: ['GET', 'POST', 'PUT', 'DELETE'], credentia
 
 
 // 5. Setup API Routes
-app.use('/api/newUser',authRoutes);
-app.use('/api/crew',jwtAuthMiddleware,crewDetail);
-app.use('/api/buses',jwtAuthMiddleware,busesRoutes);
-app.use('/api/routes',jwtAuthMiddleware,routesRoutes);
-app.use('/api/scheduling',jwtAuthMiddleware,schedulingRoutes);
-app.use('/api/admin',jwtAuthMiddleware,adminRoute)
+// app.use('/api/newUser',authRoutes);
+app.get('/api/crew',crewDetail);
+app.use('/api/buses',busesRoutes);
+app.use('/api/routes',routesRoutes);
+app.use('/api/scheduling',schedulingRoutes);
+app.use('/api/admin',adminRoute)
 
 // 6. Create HTTP Server and Integrate Socket.IO
 const server = http.createServer(app);
