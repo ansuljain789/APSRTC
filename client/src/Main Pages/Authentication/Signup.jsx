@@ -1,13 +1,10 @@
 
-
-
+import React from 'react'
 import { useState } from "react";
-import {useNavigate } from "react-router-dom";
+// import {useNavigate } from "react-router-dom";
 import axios from "axios";
-// import {toast,ToastContainer} from "react-toastify"
-// import "react-toastify/dist/ReactToastify.css";
 
-function Signup() {
+const Signup = () => {
   const [name, setName] = useState("");
   const[age,setAge]=useState("");
   const[email,setEmail]=useState("");
@@ -15,22 +12,39 @@ function Signup() {
   const[address,setAddress]=useState("");
   const [adhar, setAadharCardNumber] = useState("");
   const [password, setPassword] = useState("");
-  const [role, setRole] = useState("voter"); // Default role is "user"
-  const navigate = useNavigate();
+  const [role, setRole] = useState("admin"); // Default role is "user"
+  // const navigate = useNavigate();
 
   const handleSignup = async (e) => {
+
     e.preventDefault();
+    console.log("entering");
+    
     try {
-      await axios.post("http://localhost:3000/api/signup", {
-        name, age, email, mobile, address, adhar, role, password
+      console.log("entered");
+      
+      await axios.post('http://localhost:3000/api/newUser/signup', {
+        name,
+        age,
+        email,
+        mobile,
+        address,
+        aadharCardNumber,
+        password,
+        role,
       });
+      
 
   
       // setTimeout(() => {
       //   navigate("/login")
         
       // }, 3000);
-      navigate("/login");
+      console.log(aadharCardNumber);
+      
+      console.log(role);
+      
+    
     } catch (err) {
       console.error("Signup failed:", err);
     
@@ -132,8 +146,8 @@ function Signup() {
           value={role}
           onChange={(e) => setRole(e.target.value)}
            >
-          <option value="admin">Admin</option>
-          <option value="driver">Driver</option>
+          <option value="admin">admin</option>
+          <option value="driver">driver</option>
         </select>
         </div>
   
@@ -146,8 +160,4 @@ function Signup() {
   );
 }
 
-
-
-
-
-export default Signup;
+export default Signup
